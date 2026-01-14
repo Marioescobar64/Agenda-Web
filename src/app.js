@@ -1,6 +1,5 @@
-import { Button } from "./componnet/common/button/button.js";
-
-import { Contactos } from "./componnet/section/Contactos/Contactos.js";
+import { Button } from "./components/common/button/Button.js";
+import { Contactos } from "./components/sections/login/Contactos/Contactos.js";
 
 // App
 let app = document.getElementById("app");

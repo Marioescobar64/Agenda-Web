@@ -1,5 +1,5 @@
-// aqui van dos importes
-
+//import { ItemContacto } from ../common/itemContacto/IntemContacto.js";
+import { ItemContacto } from "../../../../components/common/button/itemContacto/ItemContacto.js";
 
 let Contactos = () => {
   let sectionContactos = document.createElement("section");

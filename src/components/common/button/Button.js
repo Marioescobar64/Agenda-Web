@@ -1,23 +1,22 @@
-let Button = (titulo, id) => {
+let Button = (title, id, img) => {
 let div = document.createElement("div");
-div.id = "id";
+div.id = id;
 
-let divImage = document.createElement("div");
+let divImage = document. createElement("div");
 divImage.className = "button-image";
 
 let imgIcon = document. createElement("img");
-imgIcon.src = './assets/icon/+.svg';
-imgIcon.alt = title;
+ imgIcon.src = `./assets/icon/${img}`;
 divImage.appendChild(imgIcon);
 
-let p = document. createElement("p");
+let p = document.createElement("p");
 p.className = "button-text";
-p.textContent = "titulo";
+p.textContent = title;
 
 div.appendChild(divImage);
 div.appendChild(p);
 
 return div;
 }
-
 export { Button };
+
