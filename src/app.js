@@ -1,6 +1,6 @@
 import { Button } from "./components/common/button/Button.js";
 import { Contactos } from "./components/sections/login/Contactos/Contactos.js";
-
+// import { viewContacts , viewNewContact } from "./components/layout/NavControler.js";    
 // App
 let app = document.getElementById("app");
 
@@ -15,3 +15,13 @@ nav.appendChild(Button("Crear tarea", "plus", "agenda.svg"));
 // section container
 let container = document.getElementById("container");
 container.appendChild(Contactos());
+
+
+let btnCrearContacto = Button("Crear contacto", "crearContacto", "plus.svg");
+
+btnCrearContacto.addEventListener("click", () => {
+  container.innerHTML = ""; // limpia la vista
+  container.appendChild(FormContacto());
+});
+
+nav.appendChild(btnCrearContacto);
