@@ -17,11 +17,24 @@ let container = document.getElementById("container");
 container.appendChild(Contactos());
 
 
-let btnCrearContacto = Button("Crear contacto", "crearContacto", "plus.svg");
 
-btnCrearContacto.addEventListener("click", () => {
-  container.innerHTML = ""; // limpia la vista
-  container.appendChild(FormContacto());
-});
 
-nav.appendChild(btnCrearContacto);
+
+/*async function tarea() {
+
+  try {
+    let data = await fetch ("https://jsonplaceholder.typicode.com/posts");
+    let r = await data.json();
+    console.log(r);
+
+  } catch (error) {
+    console.log(error);
+
+  }
+  
+}
+
+tarea();
+
+console.log("Comletado");
+*/
