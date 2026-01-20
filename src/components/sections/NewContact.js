@@ -1,81 +1,56 @@
- import { ItemContacto } from "../common/button/itemContacto/ItemContacto.js";
 
-import { ConctactList } from "../../components/sections/login/Contactos/DB.js";
+import { ItemContacto } from "../common/button/itemContacto/ItemContacto.js";
+import { getContactsFromStorage, saveContactsToStorage } from "../sections/localStorage/localStorage.js";
 
-let CrearContacto = () => {
-    let section = document.createElement("section");
-    section.className = "crear-contacto";
+function FormContacto() {
+    const form = document.createElement("form");
+    form.className = "form-contacto";
 
-    let h2 = document.createElement("h2");
-    h2.textContent = "Crear Nuevo Contacto";
-    section.appendChild(h2);
-
-    let form = document.createElement("form");
-
-    let inputNombre = document.createElement("input");
+    const inputNombre = document.createElement("input");
     inputNombre.type = "text";
     inputNombre.placeholder = "Nombre";
     inputNombre.required = true;
 
-    let inputTelefono = document.createElement("input");
-    inputTelefono.type = "text";
+    const inputTelefono = document.createElement("input");
+    inputTelefono.type = "tel";
     inputTelefono.placeholder = "Teléfono";
     inputTelefono.required = true;
 
-    let btnAgregar = document.createElement("button");
-    btnAgregar.type = "submit";
-    btnAgregar.textContent = "Agregar Contacto";
+    const btnGuardar = document.createElement("button");
+    btnGuardar.textContent = "Guardar";
+    btnGuardar.type = "submit";
 
     form.appendChild(inputNombre);
     form.appendChild(inputTelefono);
-    form.appendChild(btnAgregar);
+    form.appendChild(btnGuardar);
 
-    section.appendChild(form);
-
-    // Botón para volver a la agenda
-    let btnVolver = document.createElement("button");
-    btnVolver.type = "button";
-    btnVolver.textContent = "Volver a Agenda";
-    btnVolver.style.marginTop = "10px";
-    section.appendChild(btnVolver);
-
-    // Evento para agregar contacto
     form.addEventListener("submit", (e) => {
         e.preventDefault();
+
+        // Leer contactos actuales desde LocalStorage
+        let contactos = getContactsFromStorage();
 
         let nuevoContacto = {
             nombre: inputNombre.value,
             telefono: inputTelefono.value
         };
 
-        // Guardamos en la lista
-        ConctactList.push(nuevoContacto);
+        // Guardar nuevo contacto en LocalStorage
+        contactos.push(nuevoContacto);
+        saveContactsToStorage(contactos);
 
-        // Agregamos solo el nuevo contacto a la agenda (no duplicar toda la lista)
-        let contenedorAgenda = document.getElementById("container-contactos");
-        contenedorAgenda.appendChild(
-            ItemContacto("user.svg", nuevoContacto.nombre, nuevoContacto.telefono)
-        );
+        // Actualizar la lista de contactos en pantalla
+        let container = document.getElementById("container");
+        container.innerHTML = ""; // limpiar
+        import("./Contactos.js").then(module => {
+            container.appendChild(module.Contactos());
+        });
 
-        // Limpiar formulario
         form.reset();
-
-        // Volver automáticamente a la agenda
-        contenedorAgenda.style.display = "block";
-        let contenedorCrear = document.getElementById("container-crear");
-        contenedorCrear.style.display = "none";
+        alert("Contacto guardado ");
     });
 
-    // Botón volver a agenda
-    btnVolver.addEventListener("click", () => {
-        let contenedorAgenda = document.getElementById("container-contactos");
-        let contenedorCrear = document.getElementById("container-crear");
+    return form;
+}
 
-        contenedorAgenda.style.display = "block";
-        contenedorCrear.style.display = "none";
-    });
-
-    return section;
-};
-
-export { CrearContacto };
+export { FormContacto };
