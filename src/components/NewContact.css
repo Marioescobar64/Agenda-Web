@@ -1,0 +1,38 @@
+.crear-contacto {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: auto;
+}
+
+.crear-contacto h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.crear-contacto form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.crear-contacto input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.crear-contacto button {
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.crear-contacto button:hover {
+    background-color: #2980b9;
+}
