@@ -14,10 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let nav = document.getElementById("nav");
 
     // Crear botones
-    nav.appendChild(Button("Agenda", "agenda", "user.svg.svg"));
-    nav.appendChild(Button("Crear contacto", "crear-contacto", "plus.svg"));
-    nav.appendChild(Button("ToDoList", "todoList", "todoList.svg"));
-    nav.appendChild(Button("Crear tarea", "crear-tarea", "agenda.svg"));
+    nav.appendChild(Button("Agenda", "agenda", "./user.svg.svg"));
+    nav.appendChild(Button("Crear contacto", "crear-contacto", "./plus.svg"));
+    nav.appendChild(Button("ToDoList", "todoList", "./todoList.svg"));
+    nav.appendChild(Button("Crear tarea", "crear-tarea", "./agenda.svg"));
 
     // Contenedor principal
     let container = document.getElementById("container");
