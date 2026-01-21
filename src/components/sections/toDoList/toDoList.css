@@ -1,0 +1,104 @@
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    color: #cccfd3;
+    margin-bottom: 10px;
+    gap: 14px;
+    width: 100%;
+}
+
+
+.tarea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    border-radius: 12px;
+
+    background-color: #b2cbeb;
+    box-shadow: 0 4px 10px rgba(10, 169, 231, 0.06);
+
+    word-break: break-word;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+
+.tarea:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+
+.tarea.urgente {
+    border-left: 6px solid #e63946;
+}
+
+.tarea.tiempo {
+    border-left: 6px solid #457b9d;
+}
+
+
+.tarea strong {
+    font-size: 15px;
+    color: #333;
+}
+
+.tarea span {
+    font-size: 13px;
+    color: #555;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+
+@media (max-width: 600px) {
+    .tarea {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .tarea strong {
+        font-size: 14px;
+    }
+
+    .tarea span {
+        font-size: 12px;
+    }
+}
+
+/* Checkbox */
+.tarea input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Botón borrar */
+.btn-borrar {
+    padding: 6px 10px;
+    font-size: 13px;
+    background-color: #e63946;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+.btn-borrar:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.btn-borrar:not(:disabled):hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Tarea seleccionada */
+.tarea.seleccionada {
+    opacity: 0.6;
+    text-decoration: line-through;
+}

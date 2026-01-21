@@ -1,0 +1,69 @@
+.form-tarea {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 420px;
+    width: 100%;
+
+    background-color: #70cbe7;
+    padding: 20px;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+.form-tarea input,
+.form-tarea select {
+    padding: 12px;
+    font-size: 15px;
+    width: 100%;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+.form-tarea input:focus,
+.form-tarea select:focus {
+    outline: none;
+    border-color: #0077cc;
+    box-shadow: 0 0 0 2px rgba(0, 119, 204, 0.2);
+}
+
+
+.form-tarea button {
+    padding: 12px;
+    font-size: 15px;
+    width: 100%;
+
+    background-color: #0077cc;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+
+.form-tarea button:hover {
+    background-color: #005fa3;
+    transform: translateY(-1px);
+}
+
+
+@media (max-width: 600px) {
+    .form-tarea {
+        max-width: 100%;
+        padding: 16px;
+    }
+
+    .form-tarea button {
+        font-size: 16px;
+        padding: 14px;
+    }
+}

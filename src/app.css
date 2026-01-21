@@ -12,16 +12,23 @@
     display: grid;
     grid-template-columns: 300px 1fr; /* 300px para nav, resto para container */
     gap: 10px;
+
+    background-color: #eaeef3; 
 }
 
 /* Barra de navegación */
 #nav {
     height: 100vh;
-    border: 1px solid #000; /* corregido */
+    border: 1px solid #000;
+
+    background-color: #1cd4b6; 
 }
 
 /* Contenedor de contenido */
 #container {
     height: 100vh;
-    border: 1px solid #000; /* corregido */
+    border: 1px solid #000;
+
+    background-color: #ffffff; 
 }
+

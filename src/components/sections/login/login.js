@@ -1,38 +1,34 @@
-let login = function () {
+let root = document.getElementById("root");
 
-    // Sección principal del login
-    let loginSection = document.createElement("section");
-    loginSection.classList.add("login-section"); // Clase para CSS
+let form = document.createElement("form");
+form.className = "login-form";
 
-    // Título
-    let h3 = document.createElement("h3");
-    h3.textContent = "Login";
+let titulo = document.createElement("h2");
+titulo.textContent = "Login";
 
-    // Input usuario
-    let user = document.createElement("input");
-    user.type = "text";
-    user.placeholder = "Usuario";
-    user.classList.add("login-input");
+let inputUsuario = document.createElement("input");
+inputUsuario.type = "text";
+inputUsuario.placeholder = "Usuario = admin";
 
-    // Input password
-    let password = document.createElement("input");
-    password.type = "password";
-    password.placeholder = "Password";
-    password.classList.add("login-input");
+let inputPassword = document.createElement("input");
+inputPassword.type = "password";
+inputPassword.placeholder = "Contraseña = 1234";
 
-    // Botón
-    let button = document.createElement("button");
-    button.textContent = "Iniciar Sesión";
-    button.classList.add("login-button");
+let boton = document.createElement("button");
+boton.textContent = "Entrar";
 
-    // Agregar elementos a la sección
-    loginSection.appendChild(h3);
-    loginSection.appendChild(user);
-    loginSection.appendChild(password);
-    loginSection.appendChild(button);
+form.appendChild(titulo);
+form.appendChild(inputUsuario);
+form.appendChild(inputPassword);
+form.appendChild(boton);
+root.appendChild(form);
 
-    return loginSection;
-}
+boton.addEventListener("click", function (e) {
+    e.preventDefault();
 
-// Export default para importar más fácilmente
-export default login;
+    if (inputUsuario.value === "admin" && inputPassword.value === "1234") {
+        window.location.href = "/src/app.html";
+    } else {
+        alert("Datos incorrectos");
+    }
+});

@@ -1,6 +1,9 @@
-import { Button } from "./components/common/button/Button.js";
+import { Button } from "./components/common/button/button.js";
 import { Contactos } from "./components/sections/login/Contactos/Contactos.js";
-  import { FormContacto  } from "./components/sections/NewContact.js";
+ import { FormContacto  } from "./components/sections/NewContact.js";
+import { ToDoList   } from "./components/sections/toDoList/toDoList.js";
+import { CrearTarea   } from "./components/sections/tareas/crearTarea.js";
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -34,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("crear-contacto").addEventListener("click", () => {
         mostrarSeccion(FormContacto());
     });
-/*
+
     document.getElementById("todoList").addEventListener("click", () => {
         mostrarSeccion(ToDoList());
     });
@@ -42,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("crear-tarea").addEventListener("click", () => {
         mostrarSeccion(CrearTarea());
     });
-    */
+    
 
 });
 

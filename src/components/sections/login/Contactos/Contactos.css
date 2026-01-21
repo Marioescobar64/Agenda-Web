@@ -1,112 +1,92 @@
-/* Contenedor principal de contactos */
+/* Contenedor principal */
 .contactos {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem; /* espacio entre ítems */
-    padding: 1rem;
+    gap: 14px;
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Título */
 .contactos h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 1rem;
-    text-align: left;
+    font-size: 20px;
+    color: #ececec;
+    margin-bottom: 6px;
 }
 
-/* Cada item de contacto */
-.contact-item {
+/* Fila de cada contacto */
+.fila-contacto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+
+    background-color: #6894d6;
+    padding: 14px 16px;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover */
+.fila-contacto:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Acciones (checkbox + borrar) */
+.acciones-contacto {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0.7rem 1rem;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    transition: transform 0.1s ease, box-shadow 0.2s ease;
+    gap: 10px;
 }
 
-/* Hover sobre el contacto */
-.contact-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* Avatar del contacto */
-.contact-avatar img {
-    width: 49px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-/* Información del contacto */
-.contact-info {
-    flex: 1;
-    margin-left: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.contact-name {
-    font-weight: 600;
-    color: #333;
-}
-
-.contact-phone {
-    font-size: 0.85rem;
-    color: #666;
-}
-
-/* Botones de acción (opcional) */
-.contact-actions {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.contact-actions button {
-    padding: 0.35rem 0.7rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 0.85rem;
+/* Checkbox */
+.acciones-contacto input[type="checkbox"] {
+    transform: scale(1.2);
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.1s ease;
 }
 
-.contact-actions .edit {
-    background-color: #4facfe;
-    color: white;
+/* Botón borrar */
+.btn-borrar {
+    padding: 6px 12px;
+    font-size: 13px;
+    background-color: #e63946;
+    color: rgb(91, 222, 231);
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    opacity: 0.75;
+    transition: opacity 0.3s, transform 0.2s;
 }
 
-.contact-actions .edit:hover {
-    background-color: #00c6ff;
+.btn-borrar:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
 }
 
-.contact-actions .delete {
-    background-color: #ff6b6b;
-    color: white;
+.btn-borrar:not(:disabled):hover {
+    opacity: 1;
+    transform: scale(1.05);
 }
 
-.contact-actions .delete:hover {
-    background-color: #ff4c4c;
+/* Contacto seleccionado */
+.fila-contacto.seleccionado {
+    opacity: 0.6;
+    text-decoration: line-through;
 }
 
-/* Responsive */
-@media (max-width: 500px) {
-    .contact-item {
+
+@media (max-width: 600px) {
+    .fila-contacto {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.5rem;
+        gap: 10px;
     }
 
-    .contact-actions {
-        width: 100%;
-        justify-content: flex-start;
+    .acciones-contacto {
+        align-self: flex-end;
     }
 }

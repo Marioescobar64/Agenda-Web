@@ -1,6 +1,6 @@
 
-import { ItemContacto } from "../common/button/itemContacto/ItemContacto.js";
-import { getContactsFromStorage, saveContactsToStorage } from "../sections/localStorage/localStorage.js";
+
+import { obtenerContacto, guardarContacto } from "../sections/localStorage/localStorage.js";
 
 function FormContacto() {
     const form = document.createElement("form");
@@ -27,21 +27,22 @@ function FormContacto() {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        // Leer contactos actuales desde LocalStorage
-        let contactos = getContactsFromStorage();
+       
+        let contactos = obtenerContacto();
 
         let nuevoContacto = {
             nombre: inputNombre.value,
             telefono: inputTelefono.value
         };
 
-        // Guardar nuevo contacto en LocalStorage
+  
         contactos.push(nuevoContacto);
-        saveContactsToStorage(contactos);
+        guardarContacto(contactos);
 
-        // Actualizar la lista de contactos en pantalla
+
+        // Se actuliza cuando se agrega un nuevo contacto
         let container = document.getElementById("container");
-        container.innerHTML = ""; // limpiar
+       
         import("./Contactos.js").then(module => {
             container.appendChild(module.Contactos());
         });
