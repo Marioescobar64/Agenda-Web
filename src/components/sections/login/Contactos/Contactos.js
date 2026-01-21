@@ -20,7 +20,7 @@ let Contactos = () => {
         fila.className = "fila-contacto";
 
         // Componente del contacto
-        const item = ItemContacto("user2.svg", contact.nombre, contact.telefono);
+        const item = ItemContacto("/user2.svg", contact.nombre, contact.telefono);
 
         // Checkbox
         const checkbox = document.createElement("input");
