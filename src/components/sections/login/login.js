@@ -27,7 +27,7 @@ boton.addEventListener("click", function (e) {
     e.preventDefault();
 
     if (inputUsuario.value === "admin" && inputPassword.value === "1234") {
-        window.location.href = "/src/app.html";
+        window.location.href = "src/app.html";
     } else {
         alert("Datos incorrectos");
     }
