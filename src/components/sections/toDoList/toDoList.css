@@ -30,11 +30,11 @@
 
 
 .tarea.urgente {
-    border-left: 6px solid #e63946;
+    border-left: 40px solid #e63946;
 }
 
 .tarea.tiempo {
-    border-left: 6px solid #457b9d;
+    border-left: 40px solid #457b9d;
 }
 
 
@@ -97,8 +97,62 @@
     transform: scale(1.05);
 }
 
-/* Tarea seleccionada */
+
 .tarea.seleccionada {
     opacity: 0.6;
     text-decoration: line-through;
+}
+
+
+
+
+.tarea.editando input[type="text"] {
+    width: 80%;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+
+.tarea.editando select {
+    padding: 6px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+}
+
+
+.tarea.editando button {
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.tarea.editando button:hover {
+    opacity: 0.9;
+}
+
+
+/* Botón editar */
+.btn-editar {
+    padding: 6px 10px;
+    font-size: 13px;
+    background-color: #20303a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+.btn-editar:hover {
+    opacity: 1;
+    transform: scale(1.05);
 }

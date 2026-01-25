@@ -1,29 +1,63 @@
 import { obtenerTarea , guardarTarea  } from "../localStorage/tareaStorage.js";
 
 function ToDoList() {
-    const section = document.createElement("section");
+    let section = document.createElement("section");
     section.className = "todo-list";
 
-    const h2 = document.createElement("h2");
+    let h2 = document.createElement("h2");
     h2.textContent = "To Do List";
     section.appendChild(h2);
 
     let tareas = obtenerTarea();
 
+    // El que es urgentes va ir de primero
+    tareas.sort((a, b) => {
+        if (a.prioridad === "Urgente" && b.prioridad !== "Urgente") return -1;
+        if (a.prioridad !== "Urgente" && b.prioridad === "Urgente") return 1;
+        return 0;
+    }); 
+
     tareas.forEach((tarea, index) => {
-        const div = document.createElement("div");
+        let div = document.createElement("div");
         div.className = `tarea ${tarea.prioridad === "Urgente" ? "urgente" : "tiempo"}`;
 
-        const checkbox = document.createElement("input");
+        let checkbox = document.createElement("input");
         checkbox.type = "checkbox";
 
-        const nombre = document.createElement("strong");
-        nombre.textContent = tarea.nombre;
 
-        const prioridad = document.createElement("span");
-        prioridad.textContent = tarea.prioridad;
+        let nombreTexto = document.createElement("strong");
+        nombreTexto.textContent = tarea.nombre;
 
-        const btnBorrar = document.createElement("button");
+
+        let inputEditar = document.createElement("input");
+        inputEditar.type = "text";
+        inputEditar.value = tarea.nombre;
+        inputEditar.style.display = "none";
+
+
+        let selectPrioridad = document.createElement("select");
+        selectPrioridad.style.display = "none";
+
+        let optionUrgente = document.createElement("option");
+        optionUrgente.value = "Urgente";
+        optionUrgente.textContent = "Urgente";
+
+        let optionNormal = document.createElement("option");
+        optionNormal.value = "Con Tiempo";
+        optionNormal.textContent = "Con Tiempo";
+
+        selectPrioridad.append(optionUrgente, optionNormal);
+        selectPrioridad.value = tarea.prioridad;
+
+
+        let prioridadTexto = document.createElement("span");
+        prioridadTexto.textContent = tarea.prioridad;
+
+        let btnEditar = document.createElement("button");
+        btnEditar.textContent = "Editar";
+        btnEditar.className = "btn-editar"; 
+
+        let btnBorrar = document.createElement("button");
         btnBorrar.textContent = "Borrar";
         btnBorrar.disabled = true;
         btnBorrar.className = "btn-borrar";
@@ -33,16 +67,47 @@ function ToDoList() {
             div.classList.toggle("seleccionada", checkbox.checked);
         });
 
+ 
+        btnEditar.addEventListener("click", () => {
+            if (btnEditar.textContent === "Editar") {
+                 div.classList.add("editando");
+
+                nombreTexto.style.display = "none";
+                prioridadTexto.style.display = "none";
+                inputEditar.style.display = "block";
+                selectPrioridad.style.display = "block";
+                btnEditar.textContent = "Guardar";
+            } else {
+                tareas[index].nombre = inputEditar.value;
+                tareas[index].prioridad = selectPrioridad.value;
+
+                guardarTarea(tareas);
+
+                let container = document.getElementById("container");
+                container.innerHTML = "";
+                container.appendChild(ToDoList());
+            }
+        });
+
         btnBorrar.addEventListener("click", () => {
             tareas.splice(index, 1);
             guardarTarea(tareas);
 
-            const container = document.getElementById("container");
-            container.innerHTML = "";   
+            let container = document.getElementById("container");
+            container.innerHTML = "";
             container.appendChild(ToDoList());
         });
 
-        div.append(checkbox, nombre, prioridad, btnBorrar);
+        div.append(
+            checkbox,
+            nombreTexto,
+            inputEditar,
+            prioridadTexto,
+            selectPrioridad,
+            btnEditar,
+            btnBorrar
+        );
+
         section.appendChild(div);
     });
 

@@ -8,11 +8,11 @@ titulo.textContent = "Login";
 
 let inputUsuario = document.createElement("input");
 inputUsuario.type = "text";
-inputUsuario.placeholder = "Usuario = admin";
+inputUsuario.placeholder = "Usuario = usuario";
 
 let inputPassword = document.createElement("input");
 inputPassword.type = "password";
-inputPassword.placeholder = "Contraseña = 1234";
+inputPassword.placeholder = "Contraseña = hola";
 
 let boton = document.createElement("button");
 boton.textContent = "Entrar";
@@ -26,7 +26,7 @@ root.appendChild(form);
 boton.addEventListener("click", function (e) {
     e.preventDefault();
 
-    if (inputUsuario.value === "admin" && inputPassword.value === "1234") {
+    if (inputUsuario.value === "usuario" && inputPassword.value === "hola") {
         window.location.href = "src/app.html";
     } else {
         alert("Datos incorrectos");

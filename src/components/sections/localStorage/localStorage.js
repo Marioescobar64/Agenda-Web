@@ -14,7 +14,19 @@ function guardarContacto(contactos) {
  * @returns {Array} Lista de contactos o array vacío
  */
 function obtenerContacto() {
-    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+    let contactos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+
+    // Asegurar que todos tengan la propiedad favorito
+    contactos.forEach(contacto => {
+        if (contacto.favorito === undefined) {
+            contacto.favorito = false;
+        }
+    });
+
+
+    guardarContacto(contactos);
+
+    return contactos;
 }
 
-export { LOCAL_STORAGE_KEY, guardarContacto, obtenerContacto  };
+export { LOCAL_STORAGE_KEY, guardarContacto, obtenerContacto };

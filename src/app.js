@@ -3,6 +3,9 @@ import { Contactos } from "./components/sections/login/Contactos/Contactos.js";
  import { FormContacto  } from "./components/sections/NewContact.js";
 import { ToDoList   } from "./components/sections/toDoList/toDoList.js";
 import { CrearTarea   } from "./components/sections/tareas/crearTarea.js";
+import { Favoritos   } from "./components/sections/favoritos/favoritos.js";
+
+
 
 
 
@@ -14,10 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let nav = document.getElementById("nav");
 
     // Crear botones
-nav.appendChild(Button("Agenda", "agenda", "user.svg.svg"));
-nav.appendChild(Button("Crear contacto", "crear-contacto", "plus.svg"));
-nav.appendChild(Button("ToDoList", "todoList", "todoList.svg"));
-nav.appendChild(Button("Crear tarea", "crear-tarea", "agenda.svg"));
+    nav.appendChild(Button("Agenda", "agenda", "user.svg"));
+    nav.appendChild(Button("Crear contacto", "crear-contacto", "plus.svg"));
+    nav.appendChild(Button("ToDoList", "todoList", "todoList.svg"));
+    nav.appendChild(Button("Crear tarea", "crear-tarea", "agenda.svg"));
+    nav.appendChild(Button("Favorito", "favorito", "favorito.svg"));
 
 
 
@@ -48,26 +52,9 @@ nav.appendChild(Button("Crear tarea", "crear-tarea", "agenda.svg"));
         mostrarSeccion(CrearTarea());
     });
     
+    document.getElementById("favorito").addEventListener("click", () => {
+    mostrarSeccion(Favoritos());
+});
 
 });
 
-
-
-/*async function tarea() {
-
-  try {
-    let data = await fetch ("https://jsonplaceholder.typicode.com/posts");
-    let r = await data.json();
-    console.log(r);
-
-  } catch (error) {
-    console.log(error);
-
-  }
-  
-}
-
-tarea();
-
-console.log("Comletado");
-*/

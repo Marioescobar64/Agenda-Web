@@ -1,12 +1,12 @@
-/* CONTENEDOR PRINCIPAL (el section #container) */
+
 #container {
-   /* min-height: calc(100vh - 60px); /* ajusta según tu navbar */
+ 
     display: flex;
     justify-content: center;
     align-items: center;
 
     /* Imagen de fondo (estructura) */
-    background-image: url("../assets/imagenes/fondo.png"); /* <- tú la pones */
+    background-image: url("../assets/imagenes/fondo.png"); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -35,7 +35,7 @@
     font-size: 15px;
 }
 
-/* BOTÓN */
+/* Boton */
 .form-contacto button {
     padding: 12px;
     border-radius: 8px;
@@ -51,7 +51,7 @@
     background-color: #2980b9;
 }
 
-/* RESPONSIVE */
+/* RESPonsivo a dispositvos moviles */
 @media (max-width: 600px) {
     .form-contacto {
         margin: 0 16px;

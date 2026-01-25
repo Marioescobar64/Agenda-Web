@@ -16,18 +16,23 @@ let Contactos = () => {
     let contactos = obtenerContacto();
 
     contactos.forEach((contact, index) => {
-        const fila = document.createElement("div");
+
+        /* ✅ Asegurar propiedad favorito */
+        if (contact.favorito === undefined) {
+            contact.favorito = false;
+        }
+
+        let fila = document.createElement("div");
         fila.className = "fila-contacto";
 
-        // Componente del contacto
-        const item = ItemContacto("user2.svg", contact.nombre, contact.telefono);
+        // Contacto
+        let item = ItemContacto("user2.svg", contact.nombre, contact.telefono);
 
-        // Checkbox
-        const checkbox = document.createElement("input");
+        /* 🔹 Checkbox eliminar */
+        let checkbox = document.createElement("input");
         checkbox.type = "checkbox";
 
-        // Botón borrar
-        const btnBorrar = document.createElement("button");
+        let btnBorrar = document.createElement("button");
         btnBorrar.textContent = "Borrar";
         btnBorrar.className = "btn-borrar";
         btnBorrar.disabled = true;
@@ -41,16 +46,34 @@ let Contactos = () => {
             contactos.splice(index, 1);
             guardarContacto(contactos);
 
-            // Recargar contactos
-            const container = document.getElementById("container");
+            let container = document.getElementById("container");
             container.innerHTML = "";
             container.appendChild(Contactos());
         });
 
-        // Acciones (checkbox + borrar)
-        const acciones = document.createElement("div");
+        /* ⭐ FAVORITO */
+        let favoritoCheckbox = document.createElement("input");
+        favoritoCheckbox.type = "checkbox";
+        favoritoCheckbox.checked = contact.favorito;
+
+        let favoritoLabel = document.createElement("label");
+        favoritoLabel.textContent = "⭐";
+        favoritoLabel.style.cursor = "pointer";
+
+        favoritoCheckbox.addEventListener("change", () => {
+            contactos[index].favorito = favoritoCheckbox.checked;
+            guardarContacto(contactos);
+        });
+
+        /* 🔹 Acciones */
+        let acciones = document.createElement("div");
         acciones.className = "acciones-contacto";
-        acciones.append(checkbox, btnBorrar);
+        acciones.append(
+            checkbox,
+            btnBorrar,
+            favoritoLabel,
+            favoritoCheckbox
+        );
 
         fila.append(item, acciones);
         sectionContactos.appendChild(fila);

@@ -1,0 +1,92 @@
+/* CONTENEDOR DE FAVORITOS */
+.favoritos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    color: #51a1af;
+}
+
+/* TARJETA DE FAVORITO */
+.favorito-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(70, 130, 180, 0.85);
+    padding: 15px 20px;
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+.favorito-item:hover {
+    transform: scale(1.02);
+}
+
+/* INFO DEL CONTACTO */
+.favorito-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.favorito-nombre {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.favorito-telefono {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ESTRELLA */
+.btn-favorito {
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: gold;
+}
+
+
+@media (max-width: 600px) {
+
+    .favoritos {
+        padding: 12px;
+    }
+
+    .favorito-item {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+
+    .favorito-item > div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+
+    .favorito-item img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+    }
+
+
+    .favorito-item h3,
+    .favorito-item strong {
+        font-size: 15px;
+        color: #fff;
+    }
+
+    .favorito-item p,
+    .favorito-item span {
+        font-size: 13px;
+        color: #e0e0e0;
+    }
+}
